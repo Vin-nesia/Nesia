@@ -26,6 +26,3 @@ Vin Nesia adalah direktori alat AI yang menyerupai desain `anaiorthat.com`, diba
 2. Aktifkan GitHub Pages di pengaturan repository (branch: `main`, folder: `/`).
 3. Akses situs di [https://vin-nesia.github.io/Nesia/](https://vin-nesia.github.io/Nesia/).
 
-## Catatan
-- Desain meniru `anaiorthat.com` dengan warna dan tata letak serupa.
-- Fungsi penuh (filter, bookmark) dapat ditambahkan di `script.js` jika diperlukan.
