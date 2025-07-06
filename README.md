@@ -1,35 +1,31 @@
 # Vin Nesia - Direktori Alat AI
 
-Vin Nesia adalah direktori alat AI berbasis static site yang cepat, responsif, dan SEO-friendly. Dibangun tanpa backend menggunakan HTML, CSS, dan JavaScript dengan data dari `tools.json`. Situs ini di-deploy di [https://vinnesia.github.io/ToolsNesia/](https://vinnesia.github.io/ToolsNesia/).
+Vin Nesia adalah direktori alat AI yang menyerupai desain `anaiorthat.com`, dibangun sebagai situs statis dengan HTML, CSS, dan JavaScript. Di-deploy di [https://vinnesia.github.io/ToolsNesia/](https://vinnesia.github.io/ToolsNesia/).
 
 ## Fitur
-- **Filter Kategori**: Pilih kategori alat AI via dropdown.
-- **Pencarian**: Cari alat berdasarkan nama/deskripsi tanpa reload.
-- **Dark Mode**: Toggle mode terang/gelap, tersimpan di LocalStorage.
-- **Bookmark**: Simpan alat favorit ke LocalStorage dengan tombol bookmark.
-- **Halaman Favorit**: Lihat daftar alat yang dibookmark.
-- **Pagination**: Tampilkan 9 alat per halaman dengan tombol Prev/Next.
-- **Responsif**: Desain mobile-friendly untuk HP dan desktop.
-- **SEO-Friendly**: Meta tag, Open Graph, dan Twitter Card dioptimalkan.
-- **GitHub Pages**: Siap di-deploy ke GitHub Pages.
+- **Header**: Menu, mode toggle, dan spotlight feature.
+- **Hero Section**: Tagline, stats, search bar, quick links, dan nav tabs.
+- **Featured Section**: Tombol berita dan daftar alat terbaru.
+- **Footer**: Navigasi sederhana.
+- **Responsif**: Desain mobile-friendly.
 
 ## Struktur File
 - `index.html`: Struktur utama situs.
-- `styles.css`: Styling situs, termasuk dark mode dan responsif.
-- `script.js`: Logika untuk filter, search, pagination, bookmark, dan dark mode.
+- `styles.css`: Styling menyerupai `anaiorthat.com`.
+- `script.js`: Logika sederhana untuk search dan toggle.
 - `tools.json`: Data alat AI.
-- `logo.svg`: Logo situs dengan tema AI (biru #4A90E2, ungu #9B59B6).
-- `favicon.ico`: Ikon situs.
+- `logo.svg`: Logo situs dengan tema AI.
 
 ## Cara Menjalankan
 1. Clone repository: `git clone https://github.com/vinnesia/ToolsNesia.git`.
 2. Buka `index.html` di browser atau jalankan server lokal (`python -m http.server 8000`).
-3. Tambahkan data alat AI ke `tools.json` dengan format:
-   ```json
-   {
-       "id": "unique-id",
-       "name": "Nama Alat",
-       "description": "Deskripsi alat",
-       "category": "Kategori",
-       "url": "https://example.com"
-   }
+3. Tambahkan data alat ke `tools.json`.
+
+## Deployment ke GitHub Pages
+1. Push semua file ke repository `vinnesia/ToolsNesia`.
+2. Aktifkan GitHub Pages di pengaturan (branch: `main`, folder: `/`).
+3. Akses situs di [https://vinnesia.github.io/ToolsNesia/](https://vinnesia.github.io/ToolsNesia/).
+
+## Catatan
+- Desain meniru `anaiorthat.com` dengan warna dan tata letak serupa.
+- Fungsi penuh (filter, bookmark) dapat ditambahkan di `script.js` jika diperlukan.
