@@ -19,28 +19,65 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon.ico">
 </head>
-<body class="light-mode">
+<body class="dark-mode">
     <header>
-        <div class="logo">
-            <img src="logo.svg" alt="Vin Nesia Logo">
-            <h1>Vin Nesia</h1>
+        <div class="top-bar">
+            <span class="menu">☰</span>
+            <span class="site-name">vinnesia.com</span>
+            <span class="tabs">14</span>
+            <span class="actions">+</span>
         </div>
-        <div class="controls">
-            <select id="categoryFilter">
-                <option value="all">Semua Kategori</option>
-            </select>
-            <input type="text" id="searchInput" placeholder="Cari alat AI...">
-            <button id="themeToggle">🌙</button>
-            <button id="favoritesBtn">Favorit</button>
+        <div class="mode-toggle">
+            <span>Free mode</span>
+            <label class="switch">
+                <input type="checkbox" id="freeMode">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div class="spotlight">
+            <span>Spotlight:</span>
+            <button class="spotlight-btn">Voice to Notion (Notion assistant...)</button>
         </div>
     </header>
     <main>
-        <div id="toolsList" class="tools-grid"></div>
-        <div class="pagination">
-            <button id="prevBtn" disabled>Prev</button>
-            <button id="nextBtn" disabled>Next</button>
+        <div class="hero">
+            <p class="tagline">*TAAFT.com for short</p>
+            <h1>THERE'S AN AI FOR THAT®</h1>
+            <p class="stats">38,345 AI tools for 13,581 tasks and 4,998 jobs</p>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button class="search-icon">🔍</button>
+            </div>
+            <p class="rank">#1 website for AI tools. Used by 60M+ humans.</p>
+            <div class="quick-links">
+                <button class="quick-link red">📷 Generate images</button>
+                <button class="quick-link free">🆓 Free tools</button>
+            </div>
+            <div class="nav-tabs">
+                <button class="nav-tab active">▼ Latest</button>
+                <button class="nav-tab">For You</button>
+                <button class="nav-tab">➡️ Trending</button>
+            </div>
+        </div>
+        <div class="featured">
+            <button class="featured-btn new">Read: OECD report with TAAFT data</button>
+            <div class="released">
+                <span>✈️</span>
+                <span>Just released</span>
+            </div>
+            <div class="tool-card">
+                <img src="logo.svg" alt="Tool Icon" class="tool-icon">
+                <span class="tool-name">Intuo - Automated ro...</span>
+                <span class="tool-category">Route planning</span>
+                <span class="tool-check">✅</span>
+            </div>
         </div>
     </main>
+    <footer>
+        <button class="footer-btn home">🏠</button>
+        <button class="footer-btn search">🔍</button>
+        <button class="footer-btn chat">💬</button>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
