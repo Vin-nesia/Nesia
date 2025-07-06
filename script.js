@@ -15,17 +15,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load tools from tools.json
     fetch('tools.json')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) throw new Error('Gagal memuat tools.json');
+            return response.json();
+        })
         .then(data => {
             tools = data;
             filteredTools = tools;
+            if (tools.length === 0) {
+                toolsList.innerHTML = '<p>Tidak ada alat AI yang tersedia.</p>';
+                return;
+            }
             populateCategories();
             renderTools();
+        })
+        .catch(error => {
+            toolsList.innerHTML = '<p>Error: Gagal memuat data alat AI.</p>';
+            console.error(error);
         });
 
     // Populate category dropdown
     function populateCategories() {
         const categories = [...new Set(tools.map(tool => tool.category))];
+        if (categories.length === 0) {
+            categoryFilter.innerHTML = '<option value="all">Tidak ada kategori</option>';
+            return;
+        }
         categories.forEach(category => {
             const option = document.createElement('option');
             option.value = category;
@@ -37,6 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Render tools
     function renderTools() {
         toolsList.innerHTML = '';
+        if (filteredTools.length === 0) {
+            toolsList.innerHTML = '<p>Tidak ada alat ditemukan.</p>';
+            updatePagination();
+            return;
+        }
+
         const start = (currentPage - 1) * toolsPerPage;
         const end = start + toolsPerPage;
         const paginatedTools = filteredTools.slice(start, end);
@@ -126,6 +147,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Show favorites
     favoritesBtn.addEventListener('click', () => {
         filteredTools = tools.filter(tool => favorites.includes(tool.id));
+        if (filteredTools.length === 0) {
+            toolsList.innerHTML = '<p>Belum ada alat favorit.</p>';
+        }
         currentPage = 1;
         renderTools();
     });
