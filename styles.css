@@ -173,4 +173,14 @@ header {
     .logo h1 {
         font-size: 1.2rem;
     }
+    .no-results {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.dark-mode .no-results {
+    color: #ccc;
+}
 }
