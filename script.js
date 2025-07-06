@@ -23,14 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
             tools = data;
             filteredTools = tools;
             if (tools.length === 0) {
-                toolsList.innerHTML = '<p>Tidak ada alat AI yang tersedia.</p>';
+                toolsList.innerHTML = '<p class="no-results">Tidak ada alat AI yang tersedia.</p>';
                 return;
             }
             populateCategories();
             renderTools();
         })
         .catch(error => {
-            toolsList.innerHTML = '<p>Error: Gagal memuat data alat AI.</p>';
+            toolsList.innerHTML = '<p class="no-results">Error: Gagal memuat data alat AI.</p>';
             console.error(error);
         });
 
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             categoryFilter.innerHTML = '<option value="all">Tidak ada kategori</option>';
             return;
         }
-        categories.forEach(category => {
+        categories.sort().forEach(category => {
             const option = document.createElement('option');
             option.value = category;
             option.textContent = category;
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderTools() {
         toolsList.innerHTML = '';
         if (filteredTools.length === 0) {
-            toolsList.innerHTML = '<p>Tidak ada alat ditemukan.</p>';
+            toolsList.innerHTML = '<p class="no-results">Tidak ada alat ditemukan.</p>';
             updatePagination();
             return;
         }
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             toolCard.innerHTML = `
                 <h3>${tool.name}</h3>
                 <p>${tool.description}</p>
-                <a href="${tool.url}" target="_blank">Kunjungi</a>
+                <a href="${tool.url}" target="_blank" rel="noopener">Kunjungi</a>
                 <button class="bookmark-btn" data-id="${tool.id}">${favorites.includes(tool.id) ? '★' : '☆'}</button>
             `;
             toolsList.appendChild(toolCard);
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Filter and search
     function applyFilters() {
         const category = categoryFilter.value;
-        const search = searchInput.value.toLowerCase();
+        const search = searchInput.value.toLowerCase().trim();
 
         filteredTools = tools.filter(tool => {
             const matchesCategory = category === 'all' || tool.category === category;
@@ -105,12 +105,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentPage > 1) {
             currentPage--;
             renderTools();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     });
     nextBtn.addEventListener('click', () => {
         if (currentPage * toolsPerPage < filteredTools.length) {
             currentPage++;
             renderTools();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     });
 
@@ -148,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     favoritesBtn.addEventListener('click', () => {
         filteredTools = tools.filter(tool => favorites.includes(tool.id));
         if (filteredTools.length === 0) {
-            toolsList.innerHTML = '<p>Belum ada alat favorit.</p>';
+            toolsList.innerHTML = '<p class="no-results">Belum ada alat favorit.</p>';
         }
         currentPage = 1;
         renderTools();
